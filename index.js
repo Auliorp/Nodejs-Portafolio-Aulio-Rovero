@@ -1,6 +1,7 @@
 import express from 'express';
 import { Resend } from 'resend';
 import dotenv from 'dotenv'
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
@@ -13,15 +14,27 @@ if (!apiKey) {
 
 const resend = new Resend(apiKey);
 
+const corsOptions = {
+  origin: 'http://localhost:5173', // Reemplaza con el dominio de tu aplicación React
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+
+// Middleware para permitir solicitudes CORS
+app.use(cors(corsOptions));
+
+// Middleware para analizar el cuerpo de solicitudes con formato JSON
 app.use(express.json());
 
 app.get('/Send-mail', async (req, res) => {
+
+  const { Name, mail, Description } = req.body;
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Express Docu <onboarding@resend.dev>',
+      from: 'Consulta realizada desde el Portafolio <onboarding@resend.dev>',
       to: ['aulioroveroparedes@gmail.com'],
-      subject: 'Con la documentacion',
-      html: '<strong>it Vamoo!</strong>',
+      subject: 'Informacion Importante',
+      html: `<strong>Name:</strong> ${Name}<br><strong>Email:</strong> ${mail}<br><strong>Description:</strong> ${Description}`,
     });
 
     if (error) {
