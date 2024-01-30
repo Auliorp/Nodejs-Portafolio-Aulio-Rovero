@@ -15,7 +15,7 @@ if (!apiKey) {
 const resend = new Resend(apiKey);
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Reemplaza con el dominio de tu aplicación React
+  origin: 'https://porfolio-aulio-rovero.vercel.app', // Reemplaza con el dominio de tu aplicación React
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
@@ -31,9 +31,9 @@ app.get('/Send-mail', async (req, res) => {
   const { Name, mail, Description } = req.body;
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Consulta realizada desde el Portafolio <onboarding@resend.dev>',
+      from: 'Desde mi Portafolio <onboarding@resend.dev>',
       to: ['aulioroveroparedes@gmail.com'],
-      subject: 'Informacion Importante',
+      subject: 'Formulario Portafolio',
       html: `<strong>Name:</strong> ${Name}<br><strong>Email:</strong> ${mail}<br><strong>Description:</strong> ${Description}`,
     });
 
