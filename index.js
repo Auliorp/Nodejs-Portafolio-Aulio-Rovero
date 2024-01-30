@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 // Middleware para analizar el cuerpo de solicitudes con formato JSON
 app.use(express.json());
 
-app.get('/Send-mail', async (req, res) => {
+app.post('/Send-mail', async (req, res) => {
 
   const { Name, mail, Description } = req.body;
   try {
