@@ -15,7 +15,7 @@ if (!apiKey) {
 const resend = new Resend(apiKey);
 
 const corsOptions = {
-  origin: 'https://porfolio-aulio-rovero.vercel.app', // Reemplaza con el dominio de tu aplicación React
+  origin: ['https://porfolio-aulio-rovero.vercel.app', 'http://localhost:5173'],  // Reemplaza con el dominio de tu aplicación React
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
