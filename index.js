@@ -9,7 +9,7 @@ const apiKey = process.env.API_KEY;
 const endpointMailForm = process.env.ENDPOINT_MAIL_FORM;
 const endpointCors = process.env.ENDPOINT_CORS
 const endpointLocal = process.env.ENDPOINT_LOCAL
-const myEmail = process.env.My_EMAIL
+const myEmail = process.env.MY_EMAIL
 if (!apiKey) {
   console.error('API_KEY no está configurada. Asegúrate de proporcionarla en el archivo .env.');
   process.exit(1);
