@@ -12,7 +12,7 @@ const endpointLocal = process.env.ENDPOINT_LOCAL
 const myEmail = process.env.MY_EMAIL
 if (!apiKey) {
   console.error('API_KEY no está configurada. Asegúrate de proporcionarla en el archivo .env.');
-  process.exit(1);
+  process.exit(1);  
 }
 
 const resend = new Resend(apiKey);
